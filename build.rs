@@ -55,6 +55,8 @@ fn main() {
             #[cfg(feature = "c")]
             c::compile(&llvm_target, &target);
         }
+    } else if llvm_target[0] == "xtensa" {
+        println!("cargo:rustc-cfg=__floatundidf=\"optimized-c\"");
     }
 
     // To compile intrinsics.rs for thumb targets, where there is no libc
